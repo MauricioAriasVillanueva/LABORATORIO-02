@@ -55,6 +55,9 @@ class Program
 
     static void Main(string[] args)
     {
+        int cantidad = 0;
+        string opcion = "";
+
         string codigo = "";
         while (true)
         {
@@ -91,7 +94,6 @@ class Program
             Console.WriteLine("Error: Ingrese al menos 5 caracteres.");
         }
 
-        // Enviando variables locales mediante argumentos
         string prioridadCalculada = ObtenerPrioridad(tipo);
         MostrarResumen(codigo, nombre, tipo, desc, prioridadCalculada);
     }
