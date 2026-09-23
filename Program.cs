@@ -8,6 +8,23 @@ class Program
         return tipo == "matrícula" || tipo == "pagos" || tipo == "constancia" || tipo == "plataforma" || tipo == "otro";
     }
 
+    static string ObtenerPrioridad(string tipo)
+    {
+        tipo = tipo.Trim().ToLower();
+        if (tipo == "matrícula" || tipo == "pagos")
+        {
+            return "ALTA";
+        }
+        else if (tipo == "plataforma" || tipo == "constancia")
+        {
+            return "MEDIA";
+        }
+        else
+        {
+            return "BAJA";
+        }
+    }
+
     static void MostrarMenu()
     {
         Console.WriteLine("\n=================================");
@@ -43,5 +60,7 @@ class Program
             if (ValidarTipo(tipo)) break;
             Console.WriteLine("Error: Elija una opción de la lista.");
         }
+
+        string prioridad = ObtenerPrioridad(tipo);
     }
 }
