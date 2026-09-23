@@ -7,6 +7,7 @@ class Program
         if (texto == null) return false;
         return texto.Trim().Length >= minLargo;
     }
+
     static bool ValidarTipo(string tipo)
     {
         tipo = tipo.Trim().ToLower();
@@ -28,7 +29,6 @@ class Program
             return "BAJA";
         }
     }
-
     static void MostrarMenu()
     {
         Console.WriteLine("\n=================================");
@@ -39,7 +39,6 @@ class Program
         Console.WriteLine("3. Salir");
         Console.WriteLine("=================================");
     }
-
     static void MostrarResumen(string codigo, string nombre, string tipo, string desc, string prioridad)
     {
         Console.WriteLine("\n---------------------------------");
@@ -50,7 +49,6 @@ class Program
         Console.WriteLine($"Prioridad: {prioridad}");
         Console.WriteLine("---------------------------------");
     }
-
     static void Main(string[] args)
     {
         string[] codigos = new string[10];
