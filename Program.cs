@@ -7,11 +7,13 @@ class Program
         if (texto == null) return false;
         return texto.Trim().Length >= minLargo;
     }
+
     static bool ValidarTipo(string tipo)
     {
         tipo = tipo.Trim().ToLower();
         return tipo == "matrícula" || tipo == "pagos" || tipo == "constancia" || tipo == "plataforma" || tipo == "otro";
     }
+
     static string ObtenerPrioridad(string tipo)
     {
         tipo = tipo.Trim().ToLower();
@@ -28,6 +30,7 @@ class Program
             return "BAJA";
         }
     }
+
     static void MostrarMenu()
     {
         Console.WriteLine("\n=================================");
@@ -38,6 +41,7 @@ class Program
         Console.WriteLine("3. Salir");
         Console.WriteLine("=================================");
     }
+
     static void MostrarResumen(string codigo, string nombre, string tipo, string desc, string prioridad)
     {
         Console.WriteLine("\n---------------------------------");
@@ -52,12 +56,6 @@ class Program
     static void Main(string[] args)
     {
         string codigo = "";
-        string nombre = "";
-        string tipo = "";
-        string desc = "";
-
-        MostrarMenu();
-
         while (true)
         {
             Console.Write("Código de estudiante (min. 6 letras/números): ");
@@ -65,6 +63,8 @@ class Program
             if (ValidarTexto(codigo, 6)) break;
             Console.WriteLine("Error: El código debe tener al menos 6 caracteres.");
         }
+
+        string nombre = "";
         while (true)
         {
             Console.Write("Nombre del estudiante: ");
@@ -72,6 +72,8 @@ class Program
             if (ValidarTexto(nombre, 2)) break;
             Console.WriteLine("Error: Ingrese un nombre válido.");
         }
+
+        string tipo = "";
         while (true)
         {
             Console.Write("Tipo (matrícula, pagos, constancia, plataforma, otro): ");
@@ -79,6 +81,8 @@ class Program
             if (ValidarTipo(tipo)) break;
             Console.WriteLine("Error: Elija una opción de la lista.");
         }
+
+        string desc = "";
         while (true)
         {
             Console.Write("Descripción del problema: ");
@@ -87,7 +91,8 @@ class Program
             Console.WriteLine("Error: Ingrese al menos 5 caracteres.");
         }
 
-        string prioridad = ObtenerPrioridad(tipo);
-        MostrarResumen(codigo, nombre, tipo, desc, prioridad);
+        // Enviando variables locales mediante argumentos
+        string prioridadCalculada = ObtenerPrioridad(tipo);
+        MostrarResumen(codigo, nombre, tipo, desc, prioridadCalculada);
     }
 }
