@@ -38,6 +38,16 @@ class Program
         Console.WriteLine("3. Salir");
         Console.WriteLine("=================================");
     }
+    static void MostrarResumen(string codigo, string nombre, string tipo, string desc, string prioridad)
+    {
+        Console.WriteLine("\n---------------------------------");
+        Console.WriteLine($"Código   : {codigo}");
+        Console.WriteLine($"Nombre   : {nombre}");
+        Console.WriteLine($"Tipo     : {tipo}");
+        Console.WriteLine($"Detalle  : {desc}");
+        Console.WriteLine($"Prioridad: {prioridad}");
+        Console.WriteLine("---------------------------------");
+    }
 
     static void Main(string[] args)
     {
@@ -55,7 +65,6 @@ class Program
             if (ValidarTexto(codigo, 6)) break;
             Console.WriteLine("Error: El código debe tener al menos 6 caracteres.");
         }
-
         while (true)
         {
             Console.Write("Nombre del estudiante: ");
@@ -63,7 +72,6 @@ class Program
             if (ValidarTexto(nombre, 2)) break;
             Console.WriteLine("Error: Ingrese un nombre válido.");
         }
-
         while (true)
         {
             Console.Write("Tipo (matrícula, pagos, constancia, plataforma, otro): ");
@@ -71,7 +79,6 @@ class Program
             if (ValidarTipo(tipo)) break;
             Console.WriteLine("Error: Elija una opción de la lista.");
         }
-
         while (true)
         {
             Console.Write("Descripción del problema: ");
@@ -81,5 +88,6 @@ class Program
         }
 
         string prioridad = ObtenerPrioridad(tipo);
+        MostrarResumen(codigo, nombre, tipo, desc, prioridad);
     }
 }
