@@ -2,12 +2,31 @@
 
 class Program
 {
+    static bool ValidarTipo(string tipo)
+    {
+        tipo = tipo.Trim().ToLower();
+        return tipo == "matrícula" || tipo == "pagos" || tipo == "constancia" || tipo == "plataforma" || tipo == "otro";
+    }
+
+    static void MostrarMenu()
+    {
+        Console.WriteLine("\n=================================");
+        Console.WriteLine("    SOPORTE ACADÉMICO - MENÚ     ");
+        Console.WriteLine("=================================");
+        Console.WriteLine("1. Registrar solicitud");
+        Console.WriteLine("2. Mostrar todas las solicitudes");
+        Console.WriteLine("3. Salir");
+        Console.WriteLine("=================================");
+    }
+
     static void Main(string[] args)
     {
         string codigo = "";
         string nombre = "";
         string tipo = "";
         string desc = "";
+
+        MostrarMenu();
 
         while (true)
         {
@@ -21,8 +40,7 @@ class Program
         {
             Console.Write("Tipo (matrícula, pagos, constancia, plataforma, otro): ");
             tipo = Console.ReadLine();
-            string t = tipo != null ? tipo.Trim().ToLower() : "";
-            if (t == "matrícula" || t == "pagos" || t == "constancia" || t == "plataforma" || t == "otro") break;
+            if (ValidarTipo(tipo)) break;
             Console.WriteLine("Error: Elija una opción de la lista.");
         }
     }
