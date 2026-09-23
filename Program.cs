@@ -2,12 +2,16 @@
 
 class Program
 {
+    static bool ValidarTexto(string texto, int minLargo)
+    {
+        if (texto == null) return false;
+        return texto.Trim().Length >= minLargo;
+    }
     static bool ValidarTipo(string tipo)
     {
         tipo = tipo.Trim().ToLower();
         return tipo == "matrícula" || tipo == "pagos" || tipo == "constancia" || tipo == "plataforma" || tipo == "otro";
     }
-
     static string ObtenerPrioridad(string tipo)
     {
         tipo = tipo.Trim().ToLower();
@@ -24,7 +28,6 @@ class Program
             return "BAJA";
         }
     }
-
     static void MostrarMenu()
     {
         Console.WriteLine("\n=================================");
@@ -49,8 +52,16 @@ class Program
         {
             Console.Write("Código de estudiante (min. 6 letras/números): ");
             codigo = Console.ReadLine();
-            if (codigo != null && codigo.Trim().Length >= 6) break;
+            if (ValidarTexto(codigo, 6)) break;
             Console.WriteLine("Error: El código debe tener al menos 6 caracteres.");
+        }
+
+        while (true)
+        {
+            Console.Write("Nombre del estudiante: ");
+            nombre = Console.ReadLine();
+            if (ValidarTexto(nombre, 2)) break;
+            Console.WriteLine("Error: Ingrese un nombre válido.");
         }
 
         while (true)
@@ -59,6 +70,14 @@ class Program
             tipo = Console.ReadLine();
             if (ValidarTipo(tipo)) break;
             Console.WriteLine("Error: Elija una opción de la lista.");
+        }
+
+        while (true)
+        {
+            Console.Write("Descripción del problema: ");
+            desc = Console.ReadLine();
+            if (ValidarTexto(desc, 5)) break;
+            Console.WriteLine("Error: Ingrese al menos 5 caracteres.");
         }
 
         string prioridad = ObtenerPrioridad(tipo);
