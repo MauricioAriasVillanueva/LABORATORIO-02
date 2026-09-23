@@ -16,5 +16,14 @@ class Program
             if (codigo != null && codigo.Trim().Length >= 6) break;
             Console.WriteLine("Error: El código debe tener al menos 6 caracteres.");
         }
+
+        while (true)
+        {
+            Console.Write("Tipo (matrícula, pagos, constancia, plataforma, otro): ");
+            tipo = Console.ReadLine();
+            string t = tipo != null ? tipo.Trim().ToLower() : "";
+            if (t == "matrícula" || t == "pagos" || t == "constancia" || t == "plataforma" || t == "otro") break;
+            Console.WriteLine("Error: Elija una opción de la lista.");
+        }
     }
 }
